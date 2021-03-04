@@ -25,5 +25,5 @@ export const Clock: FC = (): JSX.Element => {
     dispatch(startToTickAway(argBaseHour));
   };
 
-  return <Presenter time={time} baseHour={baseHour} resetTime={resetTime} />;
+  return <Presenter time={time} resetTime={resetTime} />;
 };

@@ -1,8 +1,34 @@
+/** @jsxImportSource @emotion/react */
 import React, { FC } from 'react';
+import { css } from '@emotion/react';
+
+const baseHourStyle = css`
+  font-size: 2rem;
+
+  input {
+    background-color: #424242;
+    border: none;
+    border-bottom: 1px solid #888;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 100%;
+    outline: none;
+    text-align: right;
+    width: 4rem;
+
+    :focus {
+      background-color: #383838;
+      border-bottom: 2px solid #2196f3;
+    }
+  }
+`;
+
+const clockStyle = css`
+  font-size: 5rem;
+`;
 
 interface Props {
   time: number;
-  baseHour: number;
   resetTime: (baseHour: number) => void;
 }
 
@@ -29,25 +55,22 @@ const convertClock = (millisecTime: number): ClockElements => {
   };
 };
 
-export const Clock: FC<Props> = ({
-  time,
-  baseHour,
-  resetTime,
-}): JSX.Element => {
+export const Clock: FC<Props> = ({ time, resetTime }): JSX.Element => {
   const clockElements = convertClock(time);
 
   return (
     <div>
-      <div>
+      <div css={baseHourStyle}>
         1day =
         <input
-          value={baseHour}
-          type="number"
-          onChange={(e) => resetTime(Number(e.target.value) || 1)}
+          type="text"
+          inputMode="numeric"
+          defaultValue="24"
+          onChange={(e) => resetTime(Number(e.target.value) || 0)}
         />
         hours
       </div>
-      <div>
+      <div css={clockStyle}>
         {clockElements.hour}:{clockElements.minute}:{clockElements.second}
       </div>
     </div>
