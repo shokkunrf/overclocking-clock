@@ -3,6 +3,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import { Clock } from 'container/Clock';
+import { Definer } from 'container/Definer';
 
 const mainStyle = css`
   align-items: center;
@@ -16,7 +17,10 @@ const mainStyle = css`
 
 const App = (): JSX.Element => (
   <div className="App" css={mainStyle}>
-    <Clock />
+    <div>
+      <Definer />
+      <Clock />
+    </div>
   </div>
 );
 
