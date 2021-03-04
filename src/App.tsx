@@ -6,6 +6,8 @@ import { Clock } from 'container/clock';
 
 const mainStyle = css`
   align-items: center;
+  background-color: #303030;
+  color: #fff;
   display: flex;
   height: 100vh;
   justify-content: center;
