@@ -7,7 +7,7 @@ import {
   stopToTickAway,
   selectTime,
 } from 'store/timeSlice';
-import { Clock as Presenter } from 'components/clock';
+import { Clock as Presenter } from 'components/Clock';
 
 export const Clock: FC = (): JSX.Element => {
   const time = useSelector(selectTime);

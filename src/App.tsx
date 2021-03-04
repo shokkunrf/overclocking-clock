@@ -2,7 +2,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { Clock } from 'container/clock';
+import { Clock } from 'container/Clock';
 
 const mainStyle = css`
   align-items: center;
