@@ -24,10 +24,10 @@ const baseHourStyle = css`
 `;
 
 interface Props {
-  resetTime: (baseHour: number) => void;
+  setHour: (baseHour: number) => void;
 }
 
-export const Definer: FC<Props> = ({ resetTime }): JSX.Element => {
+export const Definer: FC<Props> = ({ setHour }): JSX.Element => {
   return (
     <div css={baseHourStyle}>
       1day =
@@ -35,7 +35,7 @@ export const Definer: FC<Props> = ({ resetTime }): JSX.Element => {
         type="text"
         inputMode="numeric"
         defaultValue="24"
-        onChange={(e) => resetTime(Number(e.target.value) || 0)}
+        onChange={(e) => setHour(Number(e.target.value) || 0)}
       />
       hours
     </div>

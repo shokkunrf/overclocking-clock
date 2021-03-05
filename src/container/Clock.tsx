@@ -1,11 +1,31 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import React, { FC, useEffect, useRef } from 'react';
 
-import { selectTime } from 'store/timeSlice';
 import { Clock as Presenter } from 'components/Clock';
 
-export const Clock: FC = (): JSX.Element => {
-  const time = useSelector(selectTime);
+interface Props {
+  baseHour: number;
+}
 
-  return <Presenter time={time} />;
+export const Clock: FC<Props> = ({ baseHour }): JSX.Element => {
+  const getTime = (hour: number, targetDateTime: Date): number => {
+    const targetTime =
+      targetDateTime.getTime() - targetDateTime.setHours(0, 0, 0, 0);
+    const multipliedTime = (targetTime * hour) / 24;
+
+    return multipliedTime;
+  };
+
+  const timeRef = useRef(getTime(baseHour, new Date()));
+
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      timeRef.current += 1000;
+    }, (1000 * 24) / baseHour);
+
+    return () => {
+      clearInterval(intervalID);
+    };
+  });
+
+  return <Presenter time={timeRef.current} />;
 };

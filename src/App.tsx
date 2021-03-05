@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { FC, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { Clock } from 'container/Clock';
@@ -15,13 +15,17 @@ const mainStyle = css`
   text-align: center;
 `;
 
-const App = (): JSX.Element => (
-  <div className="App" css={mainStyle}>
-    <div>
-      <Definer />
-      <Clock />
+const App: FC = (): JSX.Element => {
+  const [baseHour, setBaseHour] = useState(0);
+
+  return (
+    <div className="App" css={mainStyle}>
+      <div>
+        <Definer setBaseHour={setBaseHour} />
+        <Clock baseHour={baseHour} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;

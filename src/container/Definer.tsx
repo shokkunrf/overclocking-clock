@@ -1,20 +1,19 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { setTime, startToTickAway, stopToTickAway } from 'store/timeSlice';
 import { Definer as Presenter } from 'components/Definer';
 
-export const Definer: FC = (): JSX.Element => {
-  const dispatch = useDispatch();
+interface Props {
+  setBaseHour: (hour: number) => void;
+}
 
-  const resetTime = (argBaseHour: number): void => {
-    if (argBaseHour < 1) {
+export const Definer: FC<Props> = ({ setBaseHour }): JSX.Element => {
+  const setHour = (hour: number): void => {
+    if (hour < 1) {
       return;
     }
-    stopToTickAway();
-    dispatch(setTime(argBaseHour, new Date()));
-    dispatch(startToTickAway(argBaseHour));
+
+    setBaseHour(hour);
   };
 
-  return <Presenter resetTime={resetTime} />;
+  return <Presenter setHour={setHour} />;
 };
