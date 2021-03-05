@@ -8,7 +8,7 @@ const baseHourStyle = css`
   input {
     background-color: #424242;
     border: none;
-    border-bottom: 1px solid #888;
+    border-bottom: 2px solid #888;
     box-sizing: border-box;
     color: #fff;
     font-size: 100%;
