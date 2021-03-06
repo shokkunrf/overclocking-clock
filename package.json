@@ -2,6 +2,7 @@
   "name": "overclocking-clock",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./"
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "@testing-library/jest-dom": "^5.11.9",
@@ -76,6 +77,5 @@
       "stylelint --fix",
       "git add"
     ]
-  },
-  "homepage": "https://shokkunrf.github.io/overclocking-clock"
+  }
 }
