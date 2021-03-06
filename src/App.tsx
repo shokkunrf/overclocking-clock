@@ -21,7 +21,7 @@ const App: FC = (): JSX.Element => {
   return (
     <div className="App" css={mainStyle}>
       <div>
-        <Definer setBaseHour={setBaseHour} />
+        <Definer baseHour={baseHour} setBaseHour={setBaseHour} />
         <Clock baseHour={baseHour} />
       </div>
     </div>
