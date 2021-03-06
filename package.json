@@ -76,5 +76,6 @@
       "stylelint --fix",
       "git add"
     ]
-  }
+  },
+  "homepage": "https://shokkunrf.github.io/overclocking-clock"
 }
