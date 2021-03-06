@@ -16,7 +16,7 @@ const mainStyle = css`
 `;
 
 const App: FC = (): JSX.Element => {
-  const [baseHour, setBaseHour] = useState(0);
+  const [baseHour, setBaseHour] = useState(24);
 
   return (
     <div className="App" css={mainStyle}>

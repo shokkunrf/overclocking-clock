@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { Clock as Presenter } from 'components/Clock';
 
@@ -15,17 +15,18 @@ export const Clock: FC<Props> = ({ baseHour }): JSX.Element => {
     return multipliedTime;
   };
 
-  const timeRef = useRef(getTime(baseHour, new Date()));
+  const [time, setTime] = useState(0);
 
   useEffect(() => {
+    setTime(getTime(baseHour, new Date()));
     const intervalID = setInterval(() => {
-      timeRef.current += 1000;
+      setTime((preTime) => preTime + 1000);
     }, (1000 * 24) / baseHour);
 
     return () => {
       clearInterval(intervalID);
     };
-  });
+  }, [baseHour]);
 
-  return <Presenter time={timeRef.current} />;
+  return <Presenter time={time} />;
 };
